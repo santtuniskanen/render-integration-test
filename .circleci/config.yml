@@ -30,7 +30,14 @@ jobs:
     docker:
       - image: cimg/base:2022.09
     steps:
+      - checkout
       - run: 
           name: Calling a Deploy Hook on Render
           command: |
             curl $RENDER_DEPLOY_HOOK
+
+workflows:
+  build_and_deploy:
+    jobs:
+      - build
+      - deploy
