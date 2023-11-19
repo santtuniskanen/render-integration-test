@@ -26,3 +26,7 @@ jobs:
             docker build -t $DOCKERHUB_USERNAME/render-deploy-test:$TAG .
             echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
             docker push $DOCKERHUB_USERNAME/render-deploy-test:$TAG
+  deploy:
+    name: Calling a Deploy Hook on Render
+    command: |
+      curl $RENDER_DEPLOY_HOOK
