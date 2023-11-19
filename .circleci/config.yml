@@ -27,6 +27,8 @@ jobs:
             echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
             docker push $DOCKERHUB_USERNAME/render-deploy-test:$TAG
   deploy:
+    docker:
+      - image: cimg/base:2022.09
     steps:
       - run: 
         name: Calling a Deploy Hook on Render
